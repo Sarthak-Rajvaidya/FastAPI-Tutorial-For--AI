@@ -9,3 +9,8 @@ app = FastAPI()
 def hello():
     return {'message' : 'Hello world'}
 
+
+@app.get("/about")
+
+def about():
+    return {'message':'Chatgpt is a ghreat platform for reading about AI'}
