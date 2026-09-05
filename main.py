@@ -24,3 +24,14 @@ def about():
     return {'message':'Fully Functionaled API to manage your patients record'}
 
 
+# to give all patients data to client following is the API ok  we are using @get API
+
+@app.get('/view')
+
+def view():
+    data = load_data()
+    return data
+
+
+
+
