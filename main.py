@@ -7,10 +7,11 @@ app = FastAPI()
 @app.get("/")
 
 def hello():
-    return {'message' : 'Hello world'}
+    return {'message' : 'Patient Managment System API'}
 
 
 @app.get("/about")
 
 def about():
-    return {'message':'Chatgpt is a ghreat platform for reading about AI'}
+    return {'message':'Fully Functionaled API to manage your patients record'}
+
