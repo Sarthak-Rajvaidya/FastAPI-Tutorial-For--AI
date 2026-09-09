@@ -1,6 +1,6 @@
 #creating basic route and accessing that to display hello world 
 
-from fastapi import FastAPI
+from fastapi import FastAPI,Path
 import json
 
 app = FastAPI()
@@ -42,7 +42,9 @@ def view_patient(patient_id:str):
         return data[patient_id]
     return {'error':'patient not found'}
 
-    
+#Path() function :- In fastAPIit is used to provide metadata,validation,rules and documnetation hints for path parameteres in your API endpoints 
+
+# Title decription like in patinet_id above it we could write eg like these way ok so accordingly
 
 
 
