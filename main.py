@@ -48,6 +48,7 @@ def view_patient(patient_id:str=Path(...,decription = 'ID of the patient in DB',
 # Title decription like in patinet_id above it we could write eg like these way ok so accordingly
 
 
+#Query Parametere :- Optional key value pair appended to end of URL employed for operatiins like filtering,sorting,searching /patiensts?city=Delhi&sort_by=age
 
 
 
