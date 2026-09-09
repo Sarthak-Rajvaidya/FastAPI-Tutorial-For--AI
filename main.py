@@ -34,7 +34,7 @@ def view():
 
 #This function can fetch data for a particular fix data entry
 @app.get('/patient/{patient_id}')
-def view_patient(patient_id:str):
+def view_patient(patient_id:str=Path(...,decription = 'ID of the patient in DB',example='P001')):
     #load all the patients
     data = load_data()
     
@@ -45,6 +45,8 @@ def view_patient(patient_id:str):
 #Path() function :- In fastAPIit is used to provide metadata,validation,rules and documnetation hints for path parameteres in your API endpoints 
 
 # Title decription like in patinet_id above it we could write eg like these way ok so accordingly
+
+
 
 
 
