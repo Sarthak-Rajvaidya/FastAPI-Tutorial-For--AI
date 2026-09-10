@@ -28,6 +28,9 @@ insert_patient_data('Sarthak',30)
 
 def update_patient_data(name:str,age:int):
     if type(name) == str and type(age) == int:
+        
+        if age<0:
+            raise ValueError('Age acnnot be Negative') #type validation as well as data validation 
         print(name)
         print(age)
         print('inserted successfully')
@@ -38,3 +41,5 @@ update_patient_data('Sarthak',30)
 #Same written for update and as we ad new we need to add everything i.e need to update all functions :-
 
 #type validation not in python - we need to code manually that is where Python come
+
+#Pydantic - data validation and type validatio no probelm 
