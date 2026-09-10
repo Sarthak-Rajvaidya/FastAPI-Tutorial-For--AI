@@ -9,9 +9,19 @@
 
 #Type-valaidation nhi ho raha -python ki in general problem...dynmaikc typing nhi hoti
 
-def insert_patient_data(name:str,age:int):
-    print(name)
-    print(age)
-    print('inserted into database')
+# def insert_patient_data(name:str,age:int):
+#     print(name)
+#     print(age)
+#     print('inserted into database')
     
-insert_patient_data('Sarthak','twenty')
+# insert_patient_data('Sarthak','twenty') #type hunting - error nhi deta weak hai
+
+
+def insert_patient_data(name:str,age:int):
+    if type(name) == str and type(age) == int:
+        print(name)
+        print(age)
+        print('inserted successfully')
+    else:
+        raise TypeError('Incorrect dara type')
+insert_patient_data('Sarthak','30')
