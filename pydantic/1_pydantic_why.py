@@ -24,4 +24,17 @@ def insert_patient_data(name:str,age:int):
         print('inserted successfully')
     else:
         raise TypeError('Incorrect dara type')
-insert_patient_data('Sarthak','30')
+insert_patient_data('Sarthak',30)
+
+def update_patient_data(name:str,age:int):
+    if type(name) == str and type(age) == int:
+        print(name)
+        print(age)
+        print('inserted successfully')
+    else:
+        raise TypeError('Incorrect dara type')
+update_patient_data('Sarthak',30)
+
+#Same written for update and as we ad new we need to add everything i.e need to update all functions :-
+
+#type validation not in python - we need to code manually that is where Python come
