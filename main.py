@@ -1,7 +1,12 @@
 #creating basic route and accessing that to display hello world 
 
 from fastapi import FastAPI,Path,HTTPException,Query 
+from pydantic import BaseModel
+
 import json
+
+class Patient(BaseModel):
+    
 
 app = FastAPI()
 
@@ -68,3 +73,5 @@ def sort_patients(sort_by:str=Query(...,description='Sort on the basis of height
     sorted_data = sorted(data.values(),key=lambda x: x.get(sort_by,0),reverse = sort_order)
     
     return sorted_data
+
+
