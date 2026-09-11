@@ -131,3 +131,5 @@ def create_patient(patient : Patient):
     #save new one into json file as it a python dict
     
     save_data(data)
+    
+    return JSONResponse(status_code = 201,content = {'mesaage':'Patient created succesfuuly'})
