@@ -13,7 +13,7 @@ class Patient(BaseModel):
     age:Annotated[str,Field(...,gt=0,lt=120,description='Age of teh patient')]
     gender:Annotated[Literal['male','female','others'],Field(...,'Gender of the patient')]
     height:Annotated[float,Field(...,gt=0,description ='Height of the patient')]
-    weight : float
+    weight : Annotated[float,Field(...,gt=0,description = 'Weight of the patient')]
     
     
     
