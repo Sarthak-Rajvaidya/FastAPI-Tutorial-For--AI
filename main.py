@@ -1,7 +1,7 @@
 #creating basic route and accessing that to display hello world 
 
 from fastapi import FastAPI,Path,HTTPException,Query 
-from pydantic import BaseModel,Field
+from pydantic import BaseModel,Field,computed_field
 from typing import Annotated,Literal
 
 import json
@@ -12,8 +12,17 @@ class Patient(BaseModel):
     city :Annotated[str,Field(...,description='City where patient is living')]
     age:Annotated[str,Field(...,gt=0,lt=120,description='Age of teh patient')]
     gender:Annotated[Literal['male','female','others'],Field(...,'Gender of the patient')]
-    height:Annotated[float,Field(...,gt=0,description ='Height of the patient')]
-    weight : Annotated[float,Field(...,gt=0,description = 'Weight of the patient')]
+    height:Annotated[float,Field(...,gt=0,description ='Height of the patient in mtrs')]
+    weight : Annotated[float,Field(...,gt=0,description = 'Weight of the patient in kgs')]
+    
+    #Compuated field - with help of input find cpmuated fields 
+    
+    @computed_field
+    @property
+    def bmi(self)->float:
+        bmi = round(self.weight/self.height**2)
+        return bmi
+    
     
     
     
