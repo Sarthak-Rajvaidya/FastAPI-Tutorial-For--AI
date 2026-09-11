@@ -1,11 +1,13 @@
 #creating basic route and accessing that to display hello world 
 
 from fastapi import FastAPI,Path,HTTPException,Query 
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
+from typing import Annotated
 
 import json
 
 class Patient(BaseModel):
+    id:Annotated [str,Field(...,decription='ID of the patient',examples=['P001'])]
     name : str
     city :str
     age:int
