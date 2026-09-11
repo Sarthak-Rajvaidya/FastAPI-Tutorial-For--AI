@@ -1,6 +1,9 @@
 #creating basic route and accessing that to display hello world 
 
 from fastapi import FastAPI,Path,HTTPException,Query 
+
+from fastapi.responses import JSONResponse
+
 from pydantic import BaseModel,Field,computed_field
 from typing import Annotated,Literal
 
@@ -46,7 +49,12 @@ def load_data():
         data = json.load(f)
         
     return data
-        
+
+#creating utlity fn for converting dict to json
+
+def save_data():
+    with open('patients.json','w') as f:
+        json.dump(data,f)      
 
 @app.get("/")
 
@@ -120,4 +128,6 @@ def create_patient(patient : Patient):
     
     data[patient.id] = patient.model_dump(exclude = ['id'])
     
+    #save new one into json file as it a python dict
     
+    save_data(data)
