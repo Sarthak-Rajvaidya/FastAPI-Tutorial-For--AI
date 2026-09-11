@@ -112,8 +112,12 @@ def create_patient(patient : Patient):
     data = load_data()
     
     #Check if the patient already exist
-    
+    if patient.id in data:
+        raise HTTPException(status_code = 400,detail = 'Patient already exits')
     
     #If new patient :- new patient add 
+    #Pydantic object to dictionary - .model_dump()
+    
+    data[patient.id] = patient.model_dump(exclude = ['id'])
     
     
