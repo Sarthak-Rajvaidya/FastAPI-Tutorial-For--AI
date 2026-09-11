@@ -7,8 +7,8 @@ from typing import Annotated
 import json
 
 class Patient(BaseModel):
-    id:Annotated [str,Field(...,decription='ID of the patient',examples=['P001'])]
-    name : str
+    id:Annotated [str,Field(...,description='ID of the patient',examples=['P001'])]
+    name : Annotated[str,Field(...,description='Name of the patient')]
     city :str
     age:int
     gender:str
