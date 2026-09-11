@@ -9,7 +9,7 @@ import json
 class Patient(BaseModel):
     id:Annotated [str,Field(...,description='ID of the patient',examples=['P001'])]
     name : Annotated[str,Field(...,description='Name of the patient')]
-    city :str
+    city :Annotated[str,Field(...,description='City where patient is living')]
     age:int
     gender:str
     height:float
