@@ -10,7 +10,7 @@ class Patient(BaseModel):
     id:Annotated [str,Field(...,description='ID of the patient',examples=['P001'])]
     name : Annotated[str,Field(...,description='Name of the patient')]
     city :Annotated[str,Field(...,description='City where patient is living')]
-    age:int
+    age:Annotated[str,Field(...,gt=0,lt=120,description='Age of teh patient')]
     gender:str
     height:float
     weight : float
