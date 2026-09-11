@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI,Path,HTTPException,Query 
 from pydantic import BaseModel,Field
-from typing import Annotated
+from typing import Annotated,Literal
 
 import json
 
@@ -11,7 +11,7 @@ class Patient(BaseModel):
     name : Annotated[str,Field(...,description='Name of the patient')]
     city :Annotated[str,Field(...,description='City where patient is living')]
     age:Annotated[str,Field(...,gt=0,lt=120,description='Age of teh patient')]
-    gender:str
+    gender:Annotated[Literal['male','female','others'],Field(...,'Gender of the patient')]
     height:float
     weight : float
     
