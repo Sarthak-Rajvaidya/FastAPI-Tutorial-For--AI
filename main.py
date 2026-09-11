@@ -6,6 +6,15 @@ from pydantic import BaseModel
 import json
 
 class Patient(BaseModel):
+    name : str
+    city :str
+    age:int
+    gender:str
+    height:float
+    weight : float
+    
+    
+    
     
 
 app = FastAPI()
