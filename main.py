@@ -13,8 +13,8 @@ class Patient(BaseModel):
     id:Annotated [str,Field(...,description='ID of the patient',examples=['P001'])]
     name : Annotated[str,Field(...,description='Name of the patient')]
     city :Annotated[str,Field(...,description='City where patient is living')]
-    age:Annotated[str,Field(...,gt=0,lt=120,description='Age of teh patient')]
-    gender:Annotated[Literal['male','female','others'],Field(...,'Gender of the patient')]
+    age:Annotated[int,Field(...,gt=0,lt=120,description='Age of teh patient')]
+    gender:Annotated[Literal['male','female','others'],Field(...,decription ='Gender of the patient')]
     height:Annotated[float,Field(...,gt=0,description ='Height of the patient in mtrs')]
     weight : Annotated[float,Field(...,gt=0,description = 'Weight of the patient in kgs')]
     
@@ -23,7 +23,7 @@ class Patient(BaseModel):
     @computed_field
     @property
     def bmi(self)->float:
-        bmi = round(self.weight/self.height**2)
+        bmi = round(self.weight / self.height**2, 2)
         return bmi
     
     @computed_field
@@ -34,7 +34,7 @@ class Patient(BaseModel):
         elif self.bmi < 25:
             return 'Normal'
         elif self.bmi < 30:
-            return 'Normal'
+            return 'Overweight'
         else:
             return 'Obese'
     
@@ -52,7 +52,7 @@ def load_data():
 
 #creating utlity fn for converting dict to json
 
-def save_data():
+def save_data(data):
     with open('patients.json','w') as f:
         json.dump(data,f)      
 
@@ -78,7 +78,7 @@ def view():
 
 #This function can fetch data for a particular fix data entry
 @app.get('/patient/{patient_id}')
-def view_patient(patient_id:str=Path(...,decription = 'ID of the patient in DB',example='P001')):
+def view_patient(patient_id:str=Path(...,description = 'ID of the patient in DB',example='P001')):
     #load all the patients
     data = load_data()
     
@@ -133,3 +133,6 @@ def create_patient(patient : Patient):
     save_data(data)
     
     return JSONResponse(status_code = 201,content = {'mesaage':'Patient created succesfuuly'})
+
+#We will see PUT and DELETE
+
