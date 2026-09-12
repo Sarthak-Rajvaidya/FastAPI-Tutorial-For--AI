@@ -157,5 +157,10 @@ def update_patient(patient_id:str,patient_update:PatientUpdate):
     
     updated_patient_info =patient_update.model_dump(exclude_unset = True)
     
-    
+    for key,value in updated_patient_info.items():
+        
+        existing_patient_info[key] = value
+    #Now the problem is that when i will update weight so according to it bmi as well as category will also be updated 
+        
+    data[patient_id] = existing_patient_info
     
