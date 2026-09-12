@@ -175,5 +175,7 @@ def update_patient(patient_id:str,patient_update:PatientUpdate):
     save_data(data)
     
     
+    return JSONResponse(status_code = 200,content={'message':'patient updated '})
+    
     
     
