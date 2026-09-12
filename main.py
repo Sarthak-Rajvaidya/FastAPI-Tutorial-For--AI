@@ -161,6 +161,16 @@ def update_patient(patient_id:str,patient_update:PatientUpdate):
         
         existing_patient_info[key] = value
     #Now the problem is that when i will update weight so according to it bmi as well as category will also be updated 
+    
+    # existing_patient_info-> pydantic object -> updated bmi + verdict -> pydantic object -> dict
+    existing_patient_info['id'] = patient_id
+    patient_pydantic_obj = Patient(**existing_patient_info)
+    
+    patient_pydantic_obj.model_dump(exclude='id')
         
     data[patient_id] = existing_patient_info
+    
+    #save data
+    
+    
     
