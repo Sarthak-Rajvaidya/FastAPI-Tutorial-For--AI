@@ -167,10 +167,13 @@ def update_patient(patient_id:str,patient_update:PatientUpdate):
     patient_pydantic_obj = Patient(**existing_patient_info)
     
     patient_pydantic_obj.model_dump(exclude='id')
-        
+      #add this dict to data  
     data[patient_id] = existing_patient_info
     
     #save data
+    
+    save_data(data)
+    
     
     
     
